@@ -75,4 +75,40 @@ class Employee
         return $this->depend;
     }
 
+    public function computePay($hrsWrkd){
+        if($hrsWrkd < 0)
+            $hrsWrkd = 0;
+
+        if($hrsWrkd<=40)
+            $grossPay = $hrsWrkd * $this->rate;
+        else{
+            $grossPay =  ($hrsWrkd - 40) * ($this->rate * 1.5);
+        }
+
+        return $grossPay - ($grossPay*.062) - ($grossPay * .0145) - $this->withholdings($grossPay);
+
+    }
+
+    public function withholdings($grossIn){
+        $basis =  $grossIn - ($this->depend * 75);
+        if($basis <= 160){
+            return 0;
+        }elseif($basis > 160 && $basis <= 503){
+            return .1 * ($basis - 160);
+        }elseif($basis > 503 && $basis <= 1554){
+            return 34.30 + .15 * ($basis - 503);
+        }elseif($basis > 1554 && $basis <= 2975){
+            return 191.95 + .25 * ($basis - 1554);
+        }elseif($basis > 2975 && $basis <= 4449){
+            return 547.20 + .28 * ($basis - 2975);
+        }elseif($basis > 4449 && $basis <= 7820){
+            return 959.92 + .33 * ($basis - 4449);
+        }elseif($basis > 7820 && $basis <= 8813){
+            return 2072.35 + .35 * ($basis - 7820);
+        }else{
+            return 2419.90 + .396 * ($basis - 8813);
+        }
+
+    }
+
 }
