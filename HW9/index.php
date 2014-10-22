@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Payroll</title>
+        <link href="employeeStyle.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
 
@@ -42,7 +43,7 @@ $employees[] = new Employee("Drew Carlson",23,12);
 
 $employees[] = new Employee("Mary Johnson",31.5,-2);
 
-//foreach($employees as $curEmp)
+//foreach($employees as $curEmp)jhlkjlkjh
 
 ?>
 
@@ -70,7 +71,7 @@ $employees[] = new Employee("Mary Johnson",31.5,-2);
                 $hrsNum = "hrs$i";
                 $hrsInNum = "hrsIn$i";
 
-                echo "<div>$employees[$i] $$hrsInNum computePay($$hrsInNum)</div>";
+                echo "<div>$employees[$i] $hrsInNum computePay($$hrsInNum)</div>";
             }
             ?>
 
